@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>pagination example</title>
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+    <link href="http://cdn.bootcss.com/semantic-ui/2.2.9/semantic.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/semantic-ui/2.2.9/semantic.min.js"></script>
+    <script type="text/javascript" src="./pagination.js"></script>
+    <style type="text/css">
+        a.disabled {
+             color: black;
+        }
+    </style>
+    <script>
+        $(function() {
+            showPage(1, 2, 20);
+        })
+    </script>
 </head>
+<h1>pagination example</h1>
 <body>
-
+    <div class="ui main text container">
+        <div id="pages" class="pagination">
+        </div>
+    </div>
 </body>
 </html>

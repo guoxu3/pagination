@@ -12,58 +12,56 @@ function showPage(curPage, totalPage, count) {
     var i = 1;
     i = parseInt(i);
     var item="";
-    var href = "/task/list?page=";
+    var href = "http://www.example.com/showpage?page=";
+    if (count === null) {
+        count = 10
+    }
 
     if (totalPage <= 2) {
         for (i; i <= totalPage; i++) {
             if (i == curPage) {
                 item += "<a class='disabled item'>" + i + "</a>";
             }else {
-                item += "<a class='item' href='" + href + i + "&count=10" + "'>" + i + "</a>";
+                item += "<a class='item' href='" + href + i + "&count=" + count + "'>" + i + "</a>";
             }
         }
-        $('#pageBtn').append(item);
-        return;
     } else if (totalPage > 2 && totalPage <= 5 ) {
         if ( curPage == 1 ) {
             item += "<a class='disabled icon item'><i class='left chevron icon'></i></a>";
         } else {
-            item += "<a class='icon item' href='" + href + (curPage-1) + "&count=10" + "'><i class='left chevron icon'></i></a>";
+            item += "<a class='icon item' href='" + href + (curPage-1) + "&count=" + count + "'><i class='left chevron icon'></i></a>";
         }
         for (i; i <= totalPage; i++) {
             if (i == curPage) {
                 item += "<a class='disabled item'>" + i + "</a>";
             }else {
-                item += "<a class='item' href='" + href + i + "&count=10" + "'>" + i + "</a>";
+                item += "<a class='item' href='" + href + i + "&count=" + count + "'>" + i + "</a>";
             }
         }
         if ( curPage == totalPage ) {
             item += "<a class='disabled icon item'><i class='right chevron icon'></i></a>";
         } else {
-            item += "<a class='icon item' href='" + href + (curPage+1) + "&count=10" + "'><i class='right chevron icon'></i></a>";
+            item += "<a class='icon item' href='" + href + (curPage+1) + "&count=" + count + "'><i class='right chevron icon'></i></a>";
         }
-        $("#pageBtn").append(item);
-        return;
     } else if (totalPage > 5) {
-        console.log("bbb")
         if ( curPage == 1 ) {
             item += "<a class='disabled icon item'><i class='left chevron icon'></i></a>";
         } else {
-            item += "<a class='icon item' href='" + href + (curPage-1) + "&count=10" + "'><i class='left chevron icon'></i></a>";
+            item += "<a class='icon item' href='" + href + (curPage-1) + "&count=" + count + "'><i class='left chevron icon'></i></a>";
         }
         if (curPage < 4) {
             for (i; i <= 4; i++) {
                 if (i == curPage) {
                     item += "<a class='disabled item'>" + i + "</a>";
                 }else {
-                    item += "<a class='item' href='" + href + i + "&count=10" + "'>" + i + "</a>";
+                    item += "<a class='item' href='" + href + i + "&count=" + count + "'>" + i + "</a>";
                 }
             }
             item += "<span> . . . </span>";
-            item += "<a class='item' href='" + href + totalPage + "&count=10" + "'>" + totalPage + "</a>";
+            item += "<a class='item' href='" + href + totalPage + "&count=" + count + "'>" + totalPage + "</a>";
         }else if (curPage >= 3) {
             for (i; i <= 2; i++) {
-                item += "<a class='item' href='" + href + i + "&count=10" + "'>" + i + "</a>";
+                item += "<a class='item' href='" + href + i + "&count=" + count + "'>" + i + "</a>";
             }
             item += "<span> . . . </span>";
             if (curPage+1 == totalPage) {
@@ -71,7 +69,7 @@ function showPage(curPage, totalPage, count) {
                     if (i == curPage) {
                         item += "<a class='disabled item'>" + i + "</a>";
                     } else {
-                        item += "<a class='item' href='" + href + i + "&count=10" + "'>" + i + "</a>";
+                        item += "<a class='item' href='" + href + i + "&count=" + count + "'>" + i + "</a>";
                     }
                 }
             } else if (curPage+2 == totalPage) {
@@ -79,7 +77,7 @@ function showPage(curPage, totalPage, count) {
                     if (i == curPage) {
                         item += "<a class='disabled item'>" + i + "</a>";
                     } else {
-                        item += "<a class='item' href='" + href + i + "&count=10" + "'>" + i + "</a>";
+                        item += "<a class='item' href='" + href + i + "&count=" + count + "'>" + i + "</a>";
                     }
                 }
             }else if (curPage == totalPage) {
@@ -87,7 +85,7 @@ function showPage(curPage, totalPage, count) {
                     if (i == curPage) {
                         item += "<a class='disabled item'>" + i + "</a>";
                     } else {
-                        item += "<a class='item' href='" + href + i + "&count=10" + "'>" + i + "</a>";
+                        item += "<a class='item' href='" + href + i + "&count=" + count + "'>" + i + "</a>";
                     }
                 }
             }else{
@@ -95,20 +93,19 @@ function showPage(curPage, totalPage, count) {
                     if (i == curPage) {
                         item += "<a class='disabled item'>" + i + "</a>";
                     } else {
-                        item += "<a class='item' href='" + href + i + "&count=10" + "'>" + i + "</a>";
+                        item += "<a class='item' href='" + href + i + "&count=" + count + "'>" + i + "</a>";
                     }
                 }
                 item += "<span> . . . </span>";
-                item += "<a class='item' href='" + href + totalPage + "&count=10" + "'>" + totalPage + "</a>";
+                item += "<a class='item' href='" + href + totalPage + "&count=" + count + "'>" + totalPage + "</a>";
             }
         }
-
         if ( curPage == totalPage ) {
             item += "<a class='disabled icon item'><i class='right chevron icon'></i></a>";
         } else {
-            item += "<a class='icon item' href='" + href + (curPage+1) + "&count=10" + "'><i class='right chevron icon'></i></a>";
+            item += "<a class='icon item' href='" + href + (curPage+1) + "&count=" + count + "'><i class='right chevron icon'></i></a>";
         }
-        $('#pageBtn').append(item);
-        return;
     }
+    $('#pages').append(item);
+        return;
 }
